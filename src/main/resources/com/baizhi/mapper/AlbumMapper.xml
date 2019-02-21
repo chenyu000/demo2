@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.dao.AlbumMapper" >
+  <resultMap id="BaseResultMap" type="com.baizhi.entity.Album" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="DOUBLE" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="broadcast" property="broadcast" jdbcType="VARCHAR" />
+    <result column="count" property="count" jdbcType="INTEGER" />
+    <result column="brief" property="brief" jdbcType="VARCHAR" />
+    <result column="pulishTime" property="pulishtime" jdbcType="DATE" />
+    <result column="coverImg" property="coverimg" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="createDate" property="createdate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, score, author, broadcast, count, brief, pulishTime, coverImg, status, 
+    createDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from album
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from album
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.baizhi.entity.Album" >
+    insert into album (id, title, score, 
+      author, broadcast, count, 
+      brief, pulishTime, coverImg, 
+      status, createDate)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{score,jdbcType=DOUBLE}, 
+      #{author,jdbcType=VARCHAR}, #{broadcast,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, 
+      #{brief,jdbcType=VARCHAR}, #{pulishtime,jdbcType=DATE}, #{coverimg,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{createdate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.baizhi.entity.Album" >
+    insert into album
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="score != null" >
+        score,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="broadcast != null" >
+        broadcast,
+      </if>
+      <if test="count != null" >
+        count,
+      </if>
+      <if test="brief != null" >
+        brief,
+      </if>
+      <if test="pulishtime != null" >
+        pulishTime,
+      </if>
+      <if test="coverimg != null" >
+        coverImg,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createdate != null" >
+        createDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="broadcast != null" >
+        #{broadcast,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null" >
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="brief != null" >
+        #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="pulishtime != null" >
+        #{pulishtime,jdbcType=DATE},
+      </if>
+      <if test="coverimg != null" >
+        #{coverimg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.baizhi.entity.Album" >
+    update album
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        score = #{score,jdbcType=DOUBLE},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="broadcast != null" >
+        broadcast = #{broadcast,jdbcType=VARCHAR},
+      </if>
+      <if test="count != null" >
+        count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="brief != null" >
+        brief = #{brief,jdbcType=VARCHAR},
+      </if>
+      <if test="pulishtime != null" >
+        pulishTime = #{pulishtime,jdbcType=DATE},
+      </if>
+      <if test="coverimg != null" >
+        coverImg = #{coverimg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null" >
+        createDate = #{createdate,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.baizhi.entity.Album" >
+    update album
+    set title = #{title,jdbcType=VARCHAR},
+      score = #{score,jdbcType=DOUBLE},
+      author = #{author,jdbcType=VARCHAR},
+      broadcast = #{broadcast,jdbcType=VARCHAR},
+      count = #{count,jdbcType=INTEGER},
+      brief = #{brief,jdbcType=VARCHAR},
+      pulishTime = #{pulishtime,jdbcType=DATE},
+      coverImg = #{coverimg,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      createDate = #{createdate,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
